@@ -1,0 +1,127 @@
+using System;
+
+namespace LAB07
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+				string re = "";
+				string pass="";
+				Console.WriteLine("--------------------------");
+				Console.WriteLine("LAB07 - ATM");
+				Console.WriteLine("--------------------------\n");
+				for(int rof=1;rof<=3;rof++)
+				{
+				Console.Write("Enter password  : ");
+				pass=Console.ReadLine();
+
+				if (pass == "4434") 
+				{
+					do 
+					{
+						Console.Clear();
+						int select=0;
+						double moneysaving=630890.75;
+
+						Console.Write ("\n1. Saving account\n2. Current account\n");
+						do
+						{
+						Console.Write("Enter account 1 or 2 : ");
+						select =Convert.ToInt32(Console.ReadLine ());
+						}while(select<1||select>2);
+						if (select == 1) 
+						{
+							int select2=0;
+							Console.WriteLine("\n1. Transfer\n2. withdraw\n");
+							do
+							{
+							Console.Write("Enter select 1 or 2:");
+								select2=Convert.ToInt32(Console.ReadLine());
+							}while(select2<1||select2>2);
+							if(select2==1)
+							{
+								Console.WriteLine("To transfer...");
+								Console.Write("Enter account number:");
+								string banknumber=Console.ReadLine();
+								Console.Write("Enter account bank:");
+								string bank=Console.ReadLine();
+								Console.Write("Enter account name:");
+								string name=Console.ReadLine();
+								double transfer=0;
+								do{
+								Console.Write("Enter amount (1-20000):");
+								transfer=Convert.ToDouble(Console.ReadLine());
+								}while(transfer<1||transfer>20000);
+								Console.WriteLine("\nTotal of your money :    {0:C}",moneysaving);
+								Console.WriteLine("Amount to transfer  :    {0:C}",transfer);
+								Console.WriteLine("Amount to transfer  :    ({0}){1}->{2}",bank,banknumber,name);
+								Console.WriteLine("Summary of money    :    {0}",moneysaving-transfer);
+
+							}
+							else
+							{
+								double withdraw=0;
+								do{
+								Console.Write("Enter withdraw (1-20000) :  ");
+								withdraw=Convert.ToDouble(Console.ReadLine());
+								}while(withdraw<1||withdraw>20000);
+								int bank1000=Convert.ToInt32(withdraw)/1000;
+								int bank500=Convert.ToInt32(withdraw-bank1000*1000)/500;
+								int bank100=Convert.ToInt32(withdraw-(bank1000*1000)-(bank500*500))/100;
+								int No=Convert.ToInt32(withdraw-(bank1000*1000)-(bank500*500)-(bank100*100));
+								Console.WriteLine("\tblank 1000         {0} bank",bank1000);
+								Console.WriteLine("\tblank 500          {0} bank",bank500);
+								Console.WriteLine("\tblank 100          {0} bank",bank100);
+								Console.WriteLine("\tNo withdraw        {0:C} bank",No);
+								Console.WriteLine("\nTotal of your money :\t{0:C}",moneysaving);
+								Console.WriteLine("Summary of money    :\t{0:C}",moneysaving-(withdraw-No));
+
+							}
+
+						} 
+						else if (select == 2) 
+						{
+							double moneycurrent=1450320.75;
+							int select2=0;
+							Console.WriteLine("\n1. Transfer\n");
+							do
+							{
+								Console.Write("Enter select 1 or 2:");
+								select2=Convert.ToInt32(Console.ReadLine());
+							}while(select2<1||select2>1);
+							if(select2==1)
+							{
+								Console.WriteLine("To transfer...");
+								Console.Write("Enter account number:");
+								string banknumber=Console.ReadLine();
+								Console.Write("Enter account bank:");
+								string bank=Console.ReadLine();
+								Console.Write("Enter account name:");
+								string name=Console.ReadLine();
+								double transfer=0;
+								do{
+									Console.Write("Enter amount (1-20000):");
+									transfer=Convert.ToDouble(Console.ReadLine());
+								}while(transfer<1||transfer>20000);
+								Console.WriteLine("\nTotal of your money :    {0:C}",moneycurrent);
+								Console.WriteLine("Amount to transfer  :    {0:C}",transfer);
+								Console.WriteLine("Amount to transfer  :    ({0}){1}->{2}",bank,banknumber,name);
+								Console.WriteLine("Summary of money    :    {0}",moneycurrent-transfer);
+							}
+
+						}
+						Console.Write ("Do yow to continue press 'Y' or any key is exit program : ");
+						re = Console.ReadLine ();
+					} while(re == "Y" || re == "y");
+					System.Environment.Exit (0);
+				}
+				Console.WriteLine ("Incorrect password{0}!\n", rof);
+				}
+			Console.WriteLine ("Card lock ! ... Contract you bank");
+
+			
+
+		}
+	}
+}
